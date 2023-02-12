@@ -1,18 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import ElementRefComponent from './element-ref/element-ref.component';
+import ViewContainerRefComponent from './view-container-ref/view-container-ref.component';
+import ViewRefComponent from './view-ref/view-ref.component';
+import WelcomeComponent from './welcome/welcome.component';
+import { TemplateRefComponent } from './template-ref/template-ref.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ElementRefComponent,
+    ViewContainerRefComponent,
+    ViewRefComponent,
+    WelcomeComponent,
+    TemplateRefComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatListModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
