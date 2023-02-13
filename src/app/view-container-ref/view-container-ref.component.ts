@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-view-container-ref',
+  selector: "app-view-container-ref",
   template: ` <p>view-container-ref works!</p> `,
   styles: [],
 })

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 
 @Component({
-  selector: 'app-welcome',
+  selector: "app-welcome",
   template: `
     <div style="text-align:center">
       <img
@@ -26,9 +26,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export default class WelcomeComponent {
   exercises = [
-    { name: 'ElementRef', checked: false },
-    { name: 'ViewRef', checked: false },
-    { name: 'ViewContainerRef', checked: false },
-    { name: 'TemplateRef', checked: false },
+    { name: "ElementRef", checked: false },
+    { name: "ViewRef", checked: false },
+    { name: "ViewContainerRef", checked: false },
+    { name: "TemplateRef", checked: false },
   ];
 }
