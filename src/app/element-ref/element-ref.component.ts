@@ -48,22 +48,28 @@ export default class ElementRefComponent {
   constructor(private renderer: Renderer2) {}
 
   highlightDirectly(): void {
-    (this.el?.nativeElement as HTMLHeadingElement).innerText =
-      "This is now highlighted via direct DOM manipulation!";
-    (this.el?.nativeElement as HTMLHeadingElement).classList.add(this.highlightClass);
+    if (this.el?.nativeElement) {
+      (this.el.nativeElement as HTMLHeadingElement).innerText =
+        "This is now highlighted via direct DOM manipulation!";
+      (this.el.nativeElement as HTMLHeadingElement).classList.add(this.highlightClass);
+    }
   }
 
   highlightWithRenderer() {
-    this.renderer.setProperty(
-      this.el?.nativeElement,
-      "innerText",
-      "This is now highlighted via Renderer2!"
-    );
-    this.renderer.addClass(this.el?.nativeElement, this.highlightClass);
+    if (this.el?.nativeElement) {
+      this.renderer.setProperty(
+        this.el.nativeElement,
+        "innerText",
+        "This is now highlighted via Renderer2!"
+      );
+      this.renderer.addClass(this.el?.nativeElement, this.highlightClass);
+    }
   }
 
   reset() {
-    (this.el?.nativeElement as HTMLHeadingElement).innerHTML = this.text;
-    (this.el?.nativeElement as HTMLHeadingElement).classList.remove(this.highlightClass);
+    if (this.el?.nativeElement) {
+      (this.el.nativeElement as HTMLHeadingElement).innerHTML = this.text;
+      (this.el.nativeElement as HTMLHeadingElement).classList.remove(this.highlightClass);
+    }
   }
 }
