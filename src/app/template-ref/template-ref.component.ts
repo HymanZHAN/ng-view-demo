@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "app-template-ref",
+  standalone: true,
   template: ` <p>template-ref works!</p> `,
   styles: [],
 })
-export class TemplateRefComponent {}
+export default class TemplateRefComponent {}

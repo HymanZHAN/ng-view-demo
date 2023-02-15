@@ -1,27 +1,31 @@
-<mat-tab-group [(selectedIndex)]="selectedIndex">
-  <mat-tab label="Welcome">
-    <div class="content">
-      <app-welcome></app-welcome>
-    </div>
-  </mat-tab>
-  <mat-tab label="ElementRef">
-    <div class="content">
-      <app-element-ref></app-element-ref>
-    </div>
-  </mat-tab>
-  <mat-tab label="ViewRef">
-    <div class="content">
-      <app-view-ref></app-view-ref>
-    </div>
-  </mat-tab>
-  <mat-tab label="ViewContainerRef">
-    <div class="content">
-      <app-view-container-ref></app-view-container-ref>
-    </div>
-  </mat-tab>
-  <mat-tab label="TemplateRef">
-    <div class="content">
-      <app-template-ref></app-template-ref>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+<div class="navbar bg-base-100 shadow-md flex">
+  <div class="tabs">
+    <a
+      routerLink="/"
+      routerLinkActive="tab-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="tab"
+    >
+      Welcome
+    </a>
+    <a
+      routerLink="/element-ref"
+      routerLinkActive="tab-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="tab"
+    >
+      ElementRef
+    </a>
+    <a
+      routerLink="/view-ref"
+      routerLinkActive="tab-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="tab"
+    >
+      ViewRef
+    </a>
+  </div>
+</div>
+<section class="flex flex-col items-center mt-8">
+  <router-outlet></router-outlet>
+</section>

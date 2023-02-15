@@ -1,48 +1,28 @@
 import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { HighlightDirective } from "./highlight.directive";
 
 @Component({
   selector: "app-element-ref",
+  standalone: true,
   template: `
-    <h3 #el>{{ text }}</h3>
-
-    <mat-divider></mat-divider>
-
-    <h3 appHighlight>{{ text }}</h3>
-
-    <mat-divider></mat-divider>
-
-    <section>
-      <div class="example-button-row">
-        <button mat-raised-button color="basic" (click)="highlightDirectly()">
-          Direct DOM Manipulation
-        </button>
-        <button mat-raised-button color="basic" (click)="highlightWithRenderer()">Renderer</button>
-        <button mat-raised-button color="warn" (click)="reset()">Reset</button>
-      </div>
+    <h3 class="text-lg font-medium" #el>{{ text }}</h3>
+    <div class="divider">AND</div>
+    <h3 class="text-lg font-medium" appHighlight>{{ text }}</h3>
+    <div class="divider"></div>
+    <section class="space-x-4">
+      <button class="btn text-sm" (click)="highlightDirectly()">Direct DOM Manipulation</button>
+      <button class="btn text-sm" (click)="highlightWithRenderer()">Renderer</button>
+      <button class="btn text-sm" (click)="reset()">Reset</button>
     </section>
   `,
-  styles: [
-    `
-      .example-button-row {
-        display: table-cell;
-        max-width: 600px;
-      }
-      .example-button-row .mat-mdc-button-base {
-        margin: 8px 8px 8px 0;
-      }
-
-      .highlighted {
-        background-color: yellow;
-      }
-    `,
-  ],
+  imports: [HighlightDirective],
 })
 export default class ElementRefComponent {
   @ViewChild("el") el: ElementRef | undefined;
 
   text = "Highlight this line";
-  highlightClass = "highlighted";
+  highlightClass = "bg-error";
   highlightDirective = "appHighlight";
 
   constructor(private renderer: Renderer2) {}
