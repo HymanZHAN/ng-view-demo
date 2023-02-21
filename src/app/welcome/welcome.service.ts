@@ -33,9 +33,8 @@ export class WelcomeService {
         scan((a, b) => {
           a.has(b) ? a.delete(b) : a.add(b);
           return a;
-        }, new Set<string>()),
-        tap((a) => this.checkedExercises.next(a))
+        }, new Set<string>())
       )
-      .subscribe();
+      .subscribe(this.checkedExercises);
   }
 }
