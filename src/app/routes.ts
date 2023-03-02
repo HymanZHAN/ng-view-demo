@@ -14,6 +14,10 @@ export const routes: Route[] = [
     loadComponent: () => import("./template-ref/template-ref.component"),
   },
   {
+    path: "view-container-ref",
+    loadComponent: () => import("./view-container-ref/view-container-ref.component"),
+  },
+  {
     path: "",
     loadComponent: () => import("./welcome/welcome.component"),
   },
