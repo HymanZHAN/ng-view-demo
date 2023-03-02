@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component, ElementRef, Renderer2, ViewChild } from "@angular/core";
 import { HighlightDirective } from "./highlight.directive";
 
 @Component({
@@ -11,9 +10,9 @@ import { HighlightDirective } from "./highlight.directive";
     <h3 class="text-lg font-medium" appHighlight>{{ text }}</h3>
     <div class="divider"></div>
     <section class="space-x-4">
-      <button class="btn text-sm" (click)="highlightDirectly()">Direct DOM Manipulation</button>
-      <button class="btn text-sm" (click)="highlightWithRenderer()">Renderer</button>
-      <button class="btn text-sm" (click)="reset()">Reset</button>
+      <button class="btn btn-outline text-sm" (click)="highlightDirectly()">Direct DOM Manipulation</button>
+      <button class="btn btn-outline btn-primary text-sm" (click)="highlightWithRenderer()">Renderer</button>
+      <button class="btn btn-outline btn-warning text-sm" (click)="reset()">Reset</button>
     </section>
   `,
   imports: [HighlightDirective],
@@ -29,9 +28,9 @@ export default class ElementRefComponent {
 
   highlightDirectly(): void {
     if (this.el?.nativeElement) {
-      (this.el.nativeElement as HTMLHeadingElement).innerText =
-        "This is now highlighted via direct DOM manipulation!";
-      (this.el.nativeElement as HTMLHeadingElement).classList.add(this.highlightClass);
+      const header = this.el.nativeElement as HTMLHeadingElement;
+      header.innerText = "This is now highlighted via direct DOM manipulation!";
+      header.classList.add(this.highlightClass);
     }
   }
 
@@ -42,14 +41,15 @@ export default class ElementRefComponent {
         "innerText",
         "This is now highlighted via Renderer2!"
       );
-      this.renderer.addClass(this.el?.nativeElement, this.highlightClass);
+      this.renderer.addClass(this.el.nativeElement, this.highlightClass);
     }
   }
 
   reset() {
     if (this.el?.nativeElement) {
-      (this.el.nativeElement as HTMLHeadingElement).innerHTML = this.text;
-      (this.el.nativeElement as HTMLHeadingElement).classList.remove(this.highlightClass);
+      const header = this.el.nativeElement as HTMLHeadingElement;
+      header.innerHTML = this.text;
+      header.classList.remove(this.highlightClass);
     }
   }
 }
