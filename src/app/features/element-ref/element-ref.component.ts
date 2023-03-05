@@ -21,7 +21,7 @@ export default class ElementRefComponent {
   @ViewChild("el") el: ElementRef | undefined;
 
   text = "Highlight this line";
-  highlightClass = "bg-error";
+  highlightClass = "bg-red-200";
   highlightDirective = "appHighlight";
 
   constructor(private renderer: Renderer2) {}

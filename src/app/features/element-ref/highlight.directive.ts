@@ -13,7 +13,6 @@ export class HighlightDirective implements OnInit {
       "innerText",
       "This is highlighted by a directive!"
     );
-    // this.renderer.addClass(this.el?.nativeElement, this.highlightClass);
-    this.renderer.setStyle(this.el?.nativeElement, "background-color", "yellow");
+    this.renderer.addClass(this.el?.nativeElement, "bg-yellow-200");
   }
 }
