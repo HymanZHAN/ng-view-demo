@@ -3,22 +3,22 @@ import { Route } from "@angular/router";
 export const routes: Route[] = [
   {
     path: "element-ref",
-    loadComponent: () => import("./element-ref/element-ref.component"),
+    loadComponent: () => import("./features/element-ref/element-ref.component"),
   },
   {
     path: "view-ref",
-    loadComponent: () => import("./view-ref/view-ref.component"),
+    loadComponent: () => import("./features/view-ref/view-ref.component"),
   },
   {
     path: "template-ref",
-    loadComponent: () => import("./template-ref/template-ref.component"),
+    loadComponent: () => import("./features/template-ref/template-ref.component"),
   },
   {
     path: "view-container-ref",
-    loadComponent: () => import("./view-container-ref/view-container-ref.component"),
+    loadComponent: () => import("./features/view-container-ref/view-container-ref.component"),
   },
   {
     path: "",
-    loadComponent: () => import("./welcome/welcome.component"),
+    loadComponent: () => import("./features/welcome/welcome.component"),
   },
 ];
