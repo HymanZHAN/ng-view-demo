@@ -18,7 +18,7 @@ import { Component, ContentChild, ElementRef } from "@angular/core";
   styles: [
     `
       :host {
-        @apply card  w-1/2 shadow m-4 align-bottom;
+        @apply card  w-1/2 shadow-xl m-4 align-bottom;
       }
     `,
   ],

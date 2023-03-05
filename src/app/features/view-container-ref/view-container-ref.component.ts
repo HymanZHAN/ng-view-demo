@@ -1,26 +1,12 @@
 import { Component, Renderer2, ViewChild, ViewContainerRef } from "@angular/core";
 import { CardComponent } from "src/app/components/card/card.component";
+import { PicCardComponent } from "src/app/components/card/pic-card.component";
 
 @Component({
   selector: "app-view-container-ref",
   standalone: true,
-  imports: [CardComponent],
-  template: `
-    <app-card>
-      <ng-container title>What is a view container?</ng-container>
-      <ng-container body>
-        <p>
-          The smallest grouping of display elements that can be
-          <strong>created and destroyed together</strong>.
-        </p>
-        <p>A component class and its associated template define a view.</p>
-      </ng-container>
-    </app-card>
-
-    <button class="btn btn-outline btn-info" (click)="createNewCard()">New Card</button>
-
-    <ng-container #dynamic></ng-container>
-  `,
+  imports: [],
+  templateUrl: "./view-container-ref.component.html",
   styles: [
     `
       :host {
@@ -38,12 +24,13 @@ export default class ViewContainerRefComponent {
 
   constructor(private renderer: Renderer2) {}
 
-  createNewCard() {
-    const nodes = this.buildNodesForNewCard();
-    this.container.createComponent(CardComponent, { projectableNodes: nodes });
+  createNewCard(index?: number) {
+    const nodes = this.nodesForCard;
+    const opts =
+      index == undefined ? { projectableNodes: nodes } : { index, projectableNodes: nodes };
+    this.container.createComponent(CardComponent, opts);
   }
-
-  private buildNodesForNewCard(): Node[][] {
+  private get nodesForCard(): Node[][] {
     const titleNode: HTMLParagraphElement = this.renderer.createElement("p");
     this.renderer.setProperty(titleNode, "innerText", "New Card");
     this.renderer.setAttribute(titleNode, "title", "");
@@ -57,5 +44,10 @@ export default class ViewContainerRefComponent {
     this.renderer.setAttribute(bodyNode, "body", "");
 
     return [[titleNode], [bodyNode]];
+  }
+
+  createNewPicCard(index?: number) {
+    const opts = index == undefined ? {} : { index };
+    this.container.createComponent(PicCardComponent, opts);
   }
 }

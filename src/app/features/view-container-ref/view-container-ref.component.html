@@ -1,0 +1,24 @@
+<h2 class="text-xl">What is a view container?</h2>
+<section class="m-4 block w-1/2">
+  <p>
+    Think of it as a abstract and invisible "container" that lets you manipulate views inside it.
+    With a <code class="bg-yellow-200">ViewContainerRef</code> instance, one can clear, insert, move, remove, detach views
+    within this container. Also, one can instantiate embedded views or components and insert it (the
+    host view in the case of the container) into this container.
+  </p>
+  <p>Below is an example of using the <code class="bg-yellow-200">createComponent</code> method.</p>
+</section>
+<section class="mb-4 space-x-8">
+  <div class="btn-group mb-4">
+    <button type="button" class="btn btn-info" (click)="createNewCard()">Add Card</button>
+    <button type="button" class="btn btn-success" (click)="createNewCard(0)">Add Card @ Top</button>
+  </div>
+  <div class="btn-group mb-4">
+    <button type="button" class="btn btn-warning" (click)="createNewPicCard()">Add Pic-Card</button>
+    <button type="button" class="btn btn-error" (click)="createNewPicCard(0)">
+      Add Pic-Card @ Top
+    </button>
+  </div>
+</section>
+
+<ng-container #dynamic></ng-container>
