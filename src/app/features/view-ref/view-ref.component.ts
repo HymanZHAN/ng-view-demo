@@ -23,7 +23,7 @@ import { CardComponent } from "src/app/components/card/card.component";
       <ng-container body>
         <p>
           Properties of elements in a view can change dynamically, in response to user actions; the
-          structure (number and order) of elements in a view <strong>cannot</strong>.
+          structure (number and order) of elements in a view <strong class="bg-red-200">cannot</strong>.
         </p>
         <p>
           You can change the structure of elements by inserting, moving, or removing nested views

@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,26 +6,18 @@ import {
   ViewChild,
   ViewContainerRef,
 } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import {
-  ArrowDownOutlineComponent,
-  ArrowUpOutlineComponent,
   PlusOutlineComponent,
   TrashOutlineComponent,
+  ArrowUpOutlineComponent,
+  ArrowDownOutlineComponent,
   RefreshOutlineComponent,
 } from "@components/icons";
 
 @Component({
-  selector: "app-create-embedded-view",
+  selector: "app-manipulate-embedded-view",
   standalone: true,
-  templateUrl: "./create-embedded-view.component.html",
-  styles: [
-    `
-      :host {
-        @apply flex flex-col justify-center items-center w-full;
-      }
-    `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     PlusOutlineComponent,
@@ -35,8 +26,13 @@ import {
     ArrowDownOutlineComponent,
     RefreshOutlineComponent,
   ],
+  templateUrl: "./manipulate-embedded-view.component.html",
+  styles: [`:host {
+    @apply flex flex-col justify-center items-center w-full;
+  }`],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CreateEmbeddedViewComponent {
+export default class ManipulateEmbeddedViewComponent {
   @ViewChild("listItems", { read: ViewContainerRef }) container!: ViewContainerRef;
   @ViewChild("listItemTemplate", { read: TemplateRef }) listItemTemplate!: TemplateRef<unknown>;
 
