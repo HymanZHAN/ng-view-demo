@@ -14,8 +14,8 @@ export class WelcomeService {
   private exercises = new BehaviorSubject<string[]>([
     "ElementRef",
     "ViewRef",
-    "ViewContainerRef",
     "TemplateRef",
+    "ViewContainerRef",
   ]);
 
   private checkedExercises = new BehaviorSubject<Set<string>>(new Set());
