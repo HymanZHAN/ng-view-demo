@@ -15,7 +15,7 @@ export const routes: Route[] = [
   },
   {
     path: "view-container-ref",
-    loadComponent: () => import("./features/view-container-ref/view-container-ref.component"),
+    loadChildren: () => import("./features/view-container-ref/routes").then((mod) => mod.routes),
   },
   {
     path: "",
