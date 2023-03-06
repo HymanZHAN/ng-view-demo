@@ -1,0 +1,15 @@
+<button title="Add" type="button" (click)="addItem()" class="m-6 mt-4 w-24 btn btn-warning">
+  <app-plus-outline></app-plus-outline>
+</button>
+
+<ul class="space-y-4 w-1/3">
+  <ng-container #listItems>
+    <li class="rounded-lg h-14 p-4 w-full shadow-lg">This is static.</li>
+  </ng-container>
+</ul>
+
+<ng-template #listItemTemplate let-name="name">
+  <li class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg">
+    {{ name }}
+  </li>
+</ng-template>
