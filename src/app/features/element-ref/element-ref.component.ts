@@ -10,8 +10,12 @@ import { HighlightDirective } from "./highlight.directive";
     <h3 class="text-lg font-medium" appHighlight>{{ text }}</h3>
     <div class="divider"></div>
     <section class="space-x-4">
-      <button class="btn btn-outline text-sm" (click)="highlightDirectly()">Direct DOM Manipulation</button>
-      <button class="btn btn-outline btn-primary text-sm" (click)="highlightWithRenderer()">Renderer</button>
+      <button class="btn btn-outline text-sm" (click)="highlightDirectly()">
+        Direct DOM Manipulation
+      </button>
+      <button class="btn btn-outline btn-primary text-sm" (click)="highlightWithRenderer()">
+        Renderer
+      </button>
       <button class="btn btn-outline btn-warning text-sm" (click)="reset()">Reset</button>
     </section>
   `,

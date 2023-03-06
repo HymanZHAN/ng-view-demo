@@ -16,8 +16,8 @@ export const routes: Route[] = [
       },
       {
         path: "",
-        loadComponent: () => import('./intro/intro.component')
-      }
+        loadComponent: () => import("./intro/intro.component"),
+      },
     ],
   },
 ];

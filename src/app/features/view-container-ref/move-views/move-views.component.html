@@ -1,13 +1,25 @@
-<div class="btn-group m-6">
-  <button type="button" (click)="addItem()" class="w-24 btn btn-success">+</button>
-  <button type="button" (click)="removeItem()" class="w-24 btn btn-error">&#10539;</button>
-  <button type="button" (click)="moveItemDown()" class="w-24 btn btn-warning">&#8595;</button>
-  <button type="button" (click)="moveItemUp()" class="w-24 btn btn-info">&#8593;</button>
-  <button type="button" (click)="reset()" class="w-24 btn">&#8634;</button>
+<div class="btn-group m-6 mt-4">
+  <button title="Add" type="button" (click)="addItem()" class="w-24 btn btn-success">
+    <app-plus-outline></app-plus-outline>
+  </button>
+  <button title="Remove" type="button" (click)="removeItem()" class="w-24 btn btn-error">
+    <app-trash-outline></app-trash-outline>
+  </button>
+  <button title="Move up" type="button" (click)="moveItemDown()" class="w-24 btn btn-warning">
+    <app-arrow-down-outline></app-arrow-down-outline>
+  </button>
+  <button title="Move down" type="button" (click)="moveItemUp()" class="w-24 btn btn-info">
+    <app-arrow-up-outline></app-arrow-up-outline>
+  </button>
+  <button title="Reset" type="button" (click)="reset()" class="w-24 btn">
+    <app-refresh-outline></app-refresh-outline>
+  </button>
 </div>
 
 <ul class="space-y-4 w-1/3">
-  <ng-container #listItems></ng-container>
+  <ng-container #listItems>
+    <li class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg">This is always present.</li>
+  </ng-container>
 </ul>
 
 <ng-template #listItemTemplate let-name="name">

@@ -2,19 +2,22 @@ import { CommonModule } from "@angular/common";
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EmbeddedViewRef,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
-  ViewRef,
 } from "@angular/core";
-import { PicCardComponent } from "src/app/components/card/pic-card.component";
+import {
+  ArrowDownOutlineComponent,
+  ArrowUpOutlineComponent,
+  PlusOutlineComponent,
+  TrashOutlineComponent,
+  RefreshOutlineComponent,
+} from "@components/icons";
 
 @Component({
   selector: "app-move-views",
   standalone: true,
-  imports: [CommonModule],
   templateUrl: "./move-views.component.html",
   styles: [
     `
@@ -24,6 +27,14 @@ import { PicCardComponent } from "src/app/components/card/pic-card.component";
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    PlusOutlineComponent,
+    TrashOutlineComponent,
+    ArrowUpOutlineComponent,
+    ArrowDownOutlineComponent,
+    RefreshOutlineComponent,
+  ],
 })
 export default class MoveViewsComponent {
   @ViewChild("listItems", { read: ViewContainerRef }) container!: ViewContainerRef;

@@ -1,16 +1,18 @@
-<section class="mb-4 space-x-8">
+<section class="mb-4 flex flex-col lg:flex-row lg:space-x-8">
   <div class="btn-group mb-4">
-    <button type="button" class="btn btn-info" (click)="createNewCard()">Add Card</button>
-    <button type="button" class="btn btn-success" (click)="createNewCard(0)">Add Card @ Top</button>
+    <button type="button" class="btn btn-info w-40" (click)="createNewCard()">Add Card</button>
+    <button type="button" class="btn btn-success w-52" (click)="createNewCard(0)">
+      Add Card @ Top
+    </button>
   </div>
   <div class="btn-group mb-4">
-    <button type="button" class="btn btn-warning" (click)="createNewPicCard()">Add Pic-Card</button>
-    <button type="button" class="btn btn-error" (click)="createNewPicCard(0)">
+    <button type="button" class="btn btn-warning w-40" (click)="createNewPicCard()">
+      Add Pic-Card
+    </button>
+    <button type="button" class="btn btn-error w-52" (click)="createNewPicCard(0)">
       Add Pic-Card @ Top
     </button>
   </div>
 </section>
-
-<button class="btn btn-error" (click)="clearAll()">X</button>
 
 <ng-container #dynamic></ng-container>
