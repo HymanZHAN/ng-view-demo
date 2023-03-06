@@ -1,0 +1,24 @@
+<section class="space-x-24 flex">
+  <ng-container #counterContainer [ngTemplateOutlet]="counter"></ng-container>
+  <app-counter #counter2 [id]="2" [count]="count"></app-counter>
+</section>
+
+<ng-template #counter>
+  <app-counter #counter1 [id]="1" [count]="count"></app-counter>
+</ng-template>
+
+<div class="btn-group mt-6">
+  <button title="Decrement" type="button" class="btn btn-error" (click)="decrement()">
+    <app-minus-outline></app-minus-outline>
+  </button>
+  <button title="Increment" type="button" class="btn btn-warning" (click)="increment()">
+    <app-plus-outline></app-plus-outline>
+  </button>
+</div>
+
+<div class="btn-group mt-6">
+  <button type="button" class="btn" (click)="removeCounterDom()">Remove Counter 1 DOM</button>
+  <button type="button" class="btn btn-info" (click)="removeCounterVCR()">
+    Remove Counter 1 View
+  </button>
+</div>

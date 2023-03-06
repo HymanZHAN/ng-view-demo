@@ -11,7 +11,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "skipTests": true,
-          "standalone": true
+          "standalone": true,
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:class": {
           "skipTests": true

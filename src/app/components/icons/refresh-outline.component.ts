@@ -1,10 +1,8 @@
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 
 @Component({
   selector: "app-refresh-outline",
   standalone: true,
-  imports: [CommonModule],
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,5 +20,6 @@ import { CommonModule } from "@angular/common";
     </svg>
   `,
   styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefreshOutlineComponent {}

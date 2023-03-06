@@ -1,5 +1,5 @@
 import { NgIf } from "@angular/common";
-import { Component, ContentChild, ElementRef } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ContentChild, ElementRef } from "@angular/core";
 
 @Component({
   selector: "app-card",
@@ -22,5 +22,6 @@ import { Component, ContentChild, ElementRef } from "@angular/core";
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {}

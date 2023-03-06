@@ -11,8 +11,12 @@ export const routes: Route[] = [
         loadComponent: () => import("./create-component/create-component.component"),
       },
       {
-        path: "move-views",
-        loadComponent: () => import("./move-views/move-views.component"),
+        path: "create-embedded-view",
+        loadComponent: () => import("./create-embedded-view/create-embedded-view.component"),
+      },
+      {
+        path: "why-vcr",
+        loadComponent: () => import("./why-vcr/why-vcr.component"),
       },
       {
         path: "",

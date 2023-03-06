@@ -16,9 +16,9 @@ import {
 } from "@components/icons";
 
 @Component({
-  selector: "app-move-views",
+  selector: "app-create-embedded-view",
   standalone: true,
-  templateUrl: "./move-views.component.html",
+  templateUrl: "./create-embedded-view.component.html",
   styles: [
     `
       :host {
@@ -36,7 +36,7 @@ import {
     RefreshOutlineComponent,
   ],
 })
-export default class MoveViewsComponent {
+export default class CreateEmbeddedViewComponent {
   @ViewChild("listItems", { read: ViewContainerRef }) container!: ViewContainerRef;
   @ViewChild("listItemTemplate", { read: TemplateRef }) listItemTemplate!: TemplateRef<unknown>;
 
