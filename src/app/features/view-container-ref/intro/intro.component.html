@@ -1,13 +1,44 @@
 <h2 class="text-xl">What is a view container?</h2>
 <section class="m-4 block w-1/2 space-y-4">
-  <p>
-    Think of it as a abstract and invisible "container" that lets you manipulate views inside it.
-    With a <code class="bg-yellow-200">ViewContainerRef</code> instance, one can clear, insert,
-    move, remove, detach views within this container.
+  <p>According to Angular's doc, a view container</p>
+  <p class="pl-4 border-l-2 border-l-primary text-gray-500">
+    Can contain host views (created by instantiating a component with the
+    <code>
+      <a
+        class="link-primary"
+        rel="noopener"
+        href="https://angular.io/api/core/ViewContainerRef#createComponent"
+        target="_blank"
+        >createComponent()</a
+      >
+    </code>
+    method), and embedded views (created by instantiating a TemplateRef with the
+    <code>
+      <a
+        class="link-primary"
+        rel="noopener"
+        href="https://angular.io/api/core/ViewContainerRef#createembeddedview"
+        target="_blank"
+        >createEmbeddedView()</a
+      >
+    </code>
+    method). <br />
+    A view container instance can contain other view containers, creating a view hierarchy.
   </p>
   <p>
-    Also, one can instantiate embedded views or components and insert it (the host view in the case
-    of the container) into this container.
+    Think of it as a abstract and invisible "container" that sits "next" to the owner element that
+    you can place newly created components or embedded views. With a
+    <code class="bg-yellow-200">
+      <a
+        rel="noopener"
+        class="link-primary"
+        href="https://angular.io/api/core/ViewContainerRef"
+        target="_blank"
+        >ViewContainerRef</a
+      >
+    </code>
+    instance, one manipulate (clear, insert, move, remove, detach, etc.) the views that are created
+    by this container.
   </p>
   <p>Check out the examples!</p>
 </section>
