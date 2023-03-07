@@ -11,7 +11,10 @@ import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
       [ngClass]="{ 'border-2 border-primary': selected }"
     >
       <section class="card-body">
-        <h2 class="card-title"><ng-content select="[title]"></ng-content> - {{ index }}</h2>
+        <h2 class="card-title">
+          <ng-content select="[title]"></ng-content>
+          <ng-container *ngIf="index > 0"> - {{ index }} </ng-container>
+        </h2>
         <span>
           <ng-content select="[body]"></ng-content>
         </span>
