@@ -37,13 +37,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ManipulateEmbeddedViewComponent {
-  @ViewChild("listItems", { read: ViewContainerRef }) container!: ViewContainerRef;
-  @ViewChild("listItemTemplate", { read: TemplateRef }) listItemTemplate!: TemplateRef<unknown>;
-
-  counter = 0;
   selectedItem: string = "";
-  selectedItemView: EmbeddedViewRef<unknown> | undefined;
-  itemViewRefs: Map<string, EmbeddedViewRef<unknown>> = new Map();
+
+  @ViewChild("listItems", { read: ViewContainerRef }) private container!: ViewContainerRef;
+  @ViewChild("listItemTemplate", { read: TemplateRef })
+  private listItemTemplate!: TemplateRef<unknown>;
+
+  private counter = 0;
+  private selectedItemView: EmbeddedViewRef<unknown> | undefined;
+  private itemViewRefs: Map<string, EmbeddedViewRef<unknown>> = new Map();
 
   selectItem(value: string) {
     this.selectedItem = value;

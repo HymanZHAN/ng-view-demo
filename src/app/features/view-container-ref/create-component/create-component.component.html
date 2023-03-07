@@ -1,16 +1,24 @@
 <section class="mb-4 flex flex-col lg:flex-row lg:space-x-8">
-  <div class="btn-group mb-4">
-    <button type="button" class="btn btn-info w-40" (click)="createNewCard()">Add Card</button>
-    <button type="button" class="btn btn-success w-52" (click)="createNewCard(0)">
-      Add Card @ Top
+  <div class="btn-group mb-4 btn-group-vertical lg:btn-group-horizontal">
+    <button type="button" class="btn btn-warning gap-2 w-48" (click)="createNewCard(0)">
+      Card <app-plus-outline></app-plus-outline> <app-arrow-up-outline></app-arrow-up-outline>
+    </button>
+    <button type="button" class="btn w-48 gap-2" (click)="createNewCard()">
+      Card
+      <app-plus-outline></app-plus-outline> <app-arrow-down-outline></app-arrow-down-outline>
     </button>
   </div>
-  <div class="btn-group mb-4">
-    <button type="button" class="btn btn-warning w-40" (click)="createNewPicCard()">
-      Add Pic-Card
+  <div class="btn-group mb-4 btn-group-vertical lg:btn-group-horizontal">
+    <button type="button" class="btn btn-warning gap-2 w-48" (click)="createNewPicCard(0)">
+      Pic <app-plus-outline></app-plus-outline> <app-arrow-up-outline></app-arrow-up-outline>
     </button>
-    <button type="button" class="btn btn-error w-52" (click)="createNewPicCard(0)">
-      Add Pic-Card @ Top
+    <button type="button" class="btn gap-2 w-48" (click)="createNewPicCard()">
+      Pic <app-plus-outline></app-plus-outline> <app-arrow-down-outline></app-arrow-down-outline>
+    </button>
+  </div>
+  <div class="btn-group mb-4 btn-group-vertical lg:btn-group-horizontal">
+    <button title="Remove card" type="button" class="btn btn-error w-48" (click)="removeCard()">
+      <app-trash-outline></app-trash-outline>
     </button>
   </div>
 </section>

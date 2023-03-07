@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ComponentRef,
   Renderer2,
   ViewChild,
   ViewContainerRef,
@@ -8,11 +9,23 @@ import {
 import { CommonModule } from "@angular/common";
 import { CardComponent } from "src/app/components/card/card.component";
 import { PicCardComponent } from "src/app/components/card/pic-card.component";
+import {
+  ArrowDownOutlineComponent,
+  ArrowUpOutlineComponent,
+  PlusOutlineComponent,
+  TrashOutlineComponent,
+} from "@components/icons";
 
 @Component({
   selector: "app-create-component",
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TrashOutlineComponent,
+    PlusOutlineComponent,
+    ArrowDownOutlineComponent,
+    ArrowUpOutlineComponent,
+  ],
   templateUrl: "./create-component.component.html",
   styles: [
     `
@@ -24,7 +37,11 @@ import { PicCardComponent } from "src/app/components/card/pic-card.component";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CreateComponentComponent {
-  @ViewChild("dynamic", { read: ViewContainerRef }) container!: ViewContainerRef;
+  @ViewChild("dynamic", { read: ViewContainerRef }) private container!: ViewContainerRef;
+
+  private counter = 0;
+  private selectedCard: ComponentRef<CardComponent | PicCardComponent> | undefined;
+  private cards: ComponentRef<CardComponent | PicCardComponent>[] = [];
 
   constructor(private renderer: Renderer2) {}
 
@@ -32,8 +49,44 @@ export default class CreateComponentComponent {
     const nodes = this.nodesForCard;
     const opts =
       index == undefined ? { projectableNodes: nodes } : { index, projectableNodes: nodes };
-    this.container.createComponent(CardComponent, opts);
+    const cmpRef = this.container.createComponent(CardComponent, opts);
+
+    this.setUpCardCmp(cmpRef);
   }
+
+  createNewPicCard(index?: number) {
+    const opts = index == undefined ? {} : { index };
+    const cmpRef = this.container.createComponent(PicCardComponent, opts);
+
+    this.setUpCardCmp(cmpRef);
+  }
+
+  private setUpCardCmp(cmpRef: ComponentRef<CardComponent | PicCardComponent>) {
+    const cardIndex = ++this.counter;
+    cmpRef.setInput("index", cardIndex);
+
+    const unlisten = this.renderer.listen(cmpRef.location.nativeElement, "click", () => {
+      this.cards.forEach((v) => v.setInput("selected", false));
+      cmpRef.setInput("selected", true);
+      cmpRef.changeDetectorRef.markForCheck();
+
+      this.selectedCard = cmpRef;
+    });
+    cmpRef.onDestroy = () => unlisten();
+    this.cards.push(cmpRef);
+  }
+
+  removeCard() {
+    this.cards = this.cards.filter((cmp) => cmp !== this.selectedCard);
+    this.selectedCard?.destroy();
+    this.selectedCard = undefined;
+  }
+
+  clearAll() {
+    this.container.clear();
+    this.counter = 0;
+  }
+
   private get nodesForCard(): Node[][] {
     const titleNode: HTMLParagraphElement = this.renderer.createElement("p");
     this.renderer.setProperty(titleNode, "innerText", "New Card");
@@ -48,14 +101,5 @@ export default class CreateComponentComponent {
     this.renderer.setAttribute(bodyNode, "body", "");
 
     return [[titleNode], [bodyNode]];
-  }
-
-  createNewPicCard(index?: number) {
-    const opts = index == undefined ? {} : { index };
-    this.container.createComponent(PicCardComponent, opts);
-  }
-
-  clearAll() {
-    this.container.clear();
   }
 }
