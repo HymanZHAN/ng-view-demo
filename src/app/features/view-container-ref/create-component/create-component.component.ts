@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ComponentRef,
+  OnDestroy,
   Renderer2,
   ViewChild,
   ViewContainerRef,
@@ -36,14 +37,19 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class CreateComponentComponent {
+export default class CreateComponentComponent implements OnDestroy {
   @ViewChild("dynamic", { read: ViewContainerRef }) private container!: ViewContainerRef;
 
   private counter = 0;
   private selectedCard: ComponentRef<CardComponent | PicCardComponent> | undefined;
   private cards: ComponentRef<CardComponent | PicCardComponent>[] = [];
+  private unlisteners: (() => void)[] = [];
 
   constructor(private renderer: Renderer2) {}
+
+  ngOnDestroy(): void {
+    this.unlisteners.forEach((unlisten) => unlisten());
+  }
 
   createNewCard(index?: number) {
     const nodes = this.nodesForCard;
@@ -72,14 +78,17 @@ export default class CreateComponentComponent {
 
       this.selectedCard = cmpRef;
     });
-    cmpRef.onDestroy = () => unlisten();
+
     this.cards.push(cmpRef);
+    this.unlisteners.push(unlisten);
   }
 
   removeCard() {
-    this.cards = this.cards.filter((cmp) => cmp !== this.selectedCard);
-    this.selectedCard?.destroy();
-    this.selectedCard = undefined;
+    if (this.selectedCard) {
+      this.cards = this.cards.filter((cmp) => cmp !== this.selectedCard);
+      const selectedCardViewRef = this.selectedCard.hostView;
+      this.container.remove(this.container.indexOf(selectedCardViewRef));
+    }
   }
 
   clearAll() {

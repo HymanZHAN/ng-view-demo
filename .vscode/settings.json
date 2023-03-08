@@ -6,5 +6,5 @@
     "**/.angular": true,
     "**/dist": true
   },
-  "cSpell.words": ["daisyui", "projectable", "unlisten"]
+  "cSpell.words": ["daisyui", "projectable", "unlisten", "unlisteners", "Uturn"]
 }

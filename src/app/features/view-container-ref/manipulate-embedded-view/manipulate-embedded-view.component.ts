@@ -62,6 +62,7 @@ export default class ManipulateEmbeddedViewComponent {
     if (this.selectedItemView) {
       const selectedIndex = this.container.indexOf(this.selectedItemView);
       this.container.remove(selectedIndex);
+      this.itemViewRefs.delete(`Item ${selectedIndex + 1}`);
     }
   }
 
