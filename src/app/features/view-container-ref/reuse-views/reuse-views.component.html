@@ -1,0 +1,38 @@
+<div class="m-6 mt-4 space-y-2 flex flex-col md:flex-row md:space-x-4 md:space-y-0">
+  <button title="Add" type="button" (click)="addItem()" class="w-24 btn btn-success">
+    <app-plus-outline></app-plus-outline>
+  </button>
+  <button title="Remove" type="button" (click)="removeItem()" class="w-24 btn btn-error">
+    <app-trash-outline></app-trash-outline>
+  </button>
+  <button title="Detach item" type="button" (click)="detachItem()" class="w-24 btn btn-warning">
+    <app-archive-box-arrow-down-outline></app-archive-box-arrow-down-outline>
+  </button>
+  <button
+    title="Insert item before"
+    type="button"
+    (click)="insertItemBefore()"
+    class="w-24 btn btn-info"
+  >
+    <app-arrow-uturn-left-outline></app-arrow-uturn-left-outline>
+  </button>
+  <button title="Reset" type="button" (click)="reset()" class="w-24 btn">
+    <app-refresh-outline></app-refresh-outline>
+  </button>
+</div>
+
+<ul class="space-y-4 w-1/3">
+  <ng-container #listItems>
+    <li class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg">This is static.</li>
+  </ng-container>
+</ul>
+
+<ng-template #listItemTemplate let-name="name">
+  <li
+    class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg"
+    [ngClass]="{ 'border-2 border-primary ': selectedItem === name }"
+    (click)="selectItem(name)"
+  >
+    {{ name }}
+  </li>
+</ng-template>

@@ -20,6 +20,10 @@ export const routes: Route[] = [
         loadComponent: () => import("./why-vcr/why-vcr.component"),
       },
       {
+        path: "reuse-views",
+        loadComponent: () => import("./reuse-views/reuse-views.component"),
+      },
+      {
         path: "",
         loadComponent: () => import("./intro/intro.component"),
       },
