@@ -7,7 +7,7 @@ import { CommonModule } from "@angular/common";
   imports: [CommonModule],
   template: `
     <h3 class="text-sm">{{ title }}</h3>
-    <div class="badge badge-lg badge-primary">{{ count }}</div>
+    <div class="badge badge-lg badge-primary w-16">{{ count }}</div>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
