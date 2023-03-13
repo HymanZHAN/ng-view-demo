@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
   standalone: true,
   imports: [CommonModule],
   template: `
-    <h3 class="text-sm">{{ title }}</h3>
+    <h3 class="text-sm mb-2">{{ title }}</h3>
     <div class="badge badge-lg badge-primary w-16">{{ count }}</div>
   `,
   styles: [],

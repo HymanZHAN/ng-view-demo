@@ -8,17 +8,17 @@
 </ng-template>
 
 <div class="btn-group mt-6">
-  <button title="Decrement" type="button" class="btn btn-error" (click)="decrement()">
+  <button title="Decrement" type="button" class="btn btn-warning" (click)="decrement()">
     <app-minus-outline></app-minus-outline>
   </button>
-  <button title="Increment" type="button" class="btn btn-warning" (click)="increment()">
+  <button title="Increment" type="button" class="btn btn-info" (click)="increment()">
     <app-plus-outline></app-plus-outline>
   </button>
 </div>
 
 <div class="btn-group mt-6">
   <button type="button" class="btn" (click)="removeCounterDom()">Remove Counter 1 DOM</button>
-  <button type="button" class="btn btn-info" (click)="removeCounterVCR()">
+  <button type="button" class="btn btn-error" (click)="removeCounterVCR()">
     Remove Counter 1 View
   </button>
 </div>
