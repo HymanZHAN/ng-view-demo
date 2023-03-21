@@ -13,10 +13,15 @@ import { HighlightDirective } from "./highlight.directive";
       <button class="btn btn-outline text-sm" (click)="highlightDirectly()">
         Direct DOM Manipulation
       </button>
-      <button class="btn btn-outline btn-primary text-sm" (click)="highlightWithRenderer()">
+      <button
+        class="btn btn-outline btn-primary text-sm"
+        (click)="highlightWithRenderer()"
+      >
         Renderer
       </button>
-      <button class="btn btn-outline btn-warning text-sm" (click)="reset()">Reset</button>
+      <button class="btn btn-outline btn-warning text-sm" (click)="reset()">
+        Reset
+      </button>
     </section>
   `,
   imports: [HighlightDirective],

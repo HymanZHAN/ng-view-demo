@@ -1,11 +1,28 @@
-<div class="m-6 mt-4 space-y-2 flex flex-col md:flex-row md:space-x-4 md:space-y-0">
-  <button title="Add" type="button" (click)="addItem()" class="w-24 btn btn-success">
+<div
+  class="m-6 mt-4 space-y-2 flex flex-col md:flex-row md:space-x-4 md:space-y-0"
+>
+  <button
+    title="Add"
+    type="button"
+    (click)="addItem()"
+    class="w-24 btn btn-success"
+  >
     <app-plus-outline></app-plus-outline>
   </button>
-  <button title="Remove" type="button" (click)="removeItem()" class="w-24 btn btn-error">
+  <button
+    title="Remove"
+    type="button"
+    (click)="removeItem()"
+    class="w-24 btn btn-error"
+  >
     <app-trash-outline></app-trash-outline>
   </button>
-  <button title="Detach item" type="button" (click)="detachItem()" class="w-24 btn btn-warning">
+  <button
+    title="Detach item"
+    type="button"
+    (click)="detachItem()"
+    class="w-24 btn btn-warning"
+  >
     <app-archive-box-arrow-down-outline></app-archive-box-arrow-down-outline>
   </button>
   <button
@@ -23,7 +40,9 @@
 
 <ul class="space-y-4 w-1/3">
   <ng-container #listItems>
-    <li class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg">This is static.</li>
+    <li class="cursor-pointer rounded-lg h-14 p-4 w-full shadow-lg">
+      This is static.
+    </li>
   </ng-container>
 </ul>
 

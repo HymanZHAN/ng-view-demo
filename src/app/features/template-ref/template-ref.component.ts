@@ -15,7 +15,12 @@ import {
 @Component({
   selector: "app-template-ref",
   standalone: true,
-  imports: [CommonModule, PlusOutlineComponent, TrashOutlineComponent, RefreshOutlineComponent],
+  imports: [
+    CommonModule,
+    PlusOutlineComponent,
+    TrashOutlineComponent,
+    RefreshOutlineComponent,
+  ],
   templateUrl: "./template-ref.component.html",
   styles: [
     `
@@ -26,15 +31,19 @@ import {
   ],
 })
 export default class TemplateRefComponent {
-  @ViewChild("listItems", { read: ViewContainerRef }) container!: ViewContainerRef;
-  @ViewChild("listItemTemplate", { read: TemplateRef }) listItemTemplate!: TemplateRef<unknown>;
+  @ViewChild("listItems", { read: ViewContainerRef })
+  container!: ViewContainerRef;
+  @ViewChild("listItemTemplate", { read: TemplateRef })
+  listItemTemplate!: TemplateRef<unknown>;
 
   counter = 0;
   itemViewRefs: Map<string, EmbeddedViewRef<unknown>> = new Map();
 
   addItem() {
     const name = `Item ${++this.counter}`;
-    const vr = this.container?.createEmbeddedView(this.listItemTemplate, { name });
+    const vr = this.container?.createEmbeddedView(this.listItemTemplate, {
+      name,
+    });
     this.itemViewRefs.set(name, vr);
   }
 }

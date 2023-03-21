@@ -8,12 +8,15 @@ export const routes: Route[] = [
     children: [
       {
         path: "create-component",
-        loadComponent: () => import("./create-component/create-component.component"),
+        loadComponent: () =>
+          import("./create-component/create-component.component"),
       },
       {
         path: "manipulate-embedded-view",
         loadComponent: () =>
-          import("./manipulate-embedded-view/manipulate-embedded-view.component"),
+          import(
+            "./manipulate-embedded-view/manipulate-embedded-view.component"
+          ),
       },
       {
         path: "why-vcr",

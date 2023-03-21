@@ -11,11 +11,13 @@ export const routes: Route[] = [
   },
   {
     path: "template-ref",
-    loadComponent: () => import("./features/template-ref/template-ref.component"),
+    loadComponent: () =>
+      import("./features/template-ref/template-ref.component"),
   },
   {
     path: "view-container-ref",
-    loadChildren: () => import("./features/view-container-ref/routes").then((mod) => mod.routes),
+    loadChildren: () =>
+      import("./features/view-container-ref/routes").then((mod) => mod.routes),
   },
   {
     path: "",

@@ -24,7 +24,9 @@ export class WelcomeService {
 
   // presentation
   exercises$ = combineLatest([this.exercises, this.checkedExercises]).pipe(
-    map(([a, b]) => a.map((i) => ({ name: i, checked: b.has(i) } as ExerciseItem)))
+    map(([a, b]) =>
+      a.map((i) => ({ name: i, checked: b.has(i) } as ExerciseItem))
+    )
   );
 
   constructor() {

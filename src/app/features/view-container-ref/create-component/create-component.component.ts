@@ -38,10 +38,13 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CreateComponentComponent implements OnDestroy {
-  @ViewChild("dynamic", { read: ViewContainerRef }) private container!: ViewContainerRef;
+  @ViewChild("dynamic", { read: ViewContainerRef })
+  private container!: ViewContainerRef;
 
   private counter = 0;
-  private selectedCard: ComponentRef<CardComponent | PicCardComponent> | undefined;
+  private selectedCard:
+    | ComponentRef<CardComponent | PicCardComponent>
+    | undefined;
   private cards: ComponentRef<CardComponent | PicCardComponent>[] = [];
   private unlisteners: (() => void)[] = [];
 
@@ -54,7 +57,9 @@ export default class CreateComponentComponent implements OnDestroy {
   createNewCard(index?: number) {
     const nodes = this.nodesForCard;
     const opts =
-      index == undefined ? { projectableNodes: nodes } : { index, projectableNodes: nodes };
+      index == undefined
+        ? { projectableNodes: nodes }
+        : { index, projectableNodes: nodes };
     const cmpRef = this.container.createComponent(CardComponent, opts);
 
     this.setUpCardCmp(cmpRef);
@@ -71,13 +76,17 @@ export default class CreateComponentComponent implements OnDestroy {
     const cardIndex = ++this.counter;
     cmpRef.setInput("index", cardIndex);
 
-    const unlisten = this.renderer.listen(cmpRef.location.nativeElement, "click", () => {
-      this.cards.forEach((v) => v.setInput("selected", false));
-      cmpRef.setInput("selected", true);
-      cmpRef.changeDetectorRef.markForCheck();
+    const unlisten = this.renderer.listen(
+      cmpRef.location.nativeElement,
+      "click",
+      () => {
+        this.cards.forEach((v) => v.setInput("selected", false));
+        cmpRef.setInput("selected", true);
+        cmpRef.changeDetectorRef.markForCheck();
 
-      this.selectedCard = cmpRef;
-    });
+        this.selectedCard = cmpRef;
+      }
+    );
 
     this.cards.push(cmpRef);
     this.unlisteners.push(unlisten);

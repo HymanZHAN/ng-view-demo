@@ -42,7 +42,8 @@ import { ArrowUturnLeftOutlineComponent } from "@components/icons/arrow-uturn-le
 export default class ReuseViewsComponent {
   selectedItem: string = "";
 
-  @ViewChild("listItems", { read: ViewContainerRef }) private container!: ViewContainerRef;
+  @ViewChild("listItems", { read: ViewContainerRef })
+  private container!: ViewContainerRef;
   @ViewChild("listItemTemplate", { read: TemplateRef })
   private listItemTemplate!: TemplateRef<unknown>;
 
@@ -58,7 +59,9 @@ export default class ReuseViewsComponent {
 
   addItem() {
     const name = `Item ${++this.counter}`;
-    const evr = this.container?.createEmbeddedView(this.listItemTemplate, { name });
+    const evr = this.container?.createEmbeddedView(this.listItemTemplate, {
+      name,
+    });
 
     this.viewRefMap.set(name, evr);
   }

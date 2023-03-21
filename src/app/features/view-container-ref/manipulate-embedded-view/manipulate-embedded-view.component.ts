@@ -39,7 +39,8 @@ import {
 export default class ManipulateEmbeddedViewComponent {
   selectedItem: string = "";
 
-  @ViewChild("listItems", { read: ViewContainerRef }) private container!: ViewContainerRef;
+  @ViewChild("listItems", { read: ViewContainerRef })
+  private container!: ViewContainerRef;
   @ViewChild("listItemTemplate", { read: TemplateRef })
   private listItemTemplate!: TemplateRef<unknown>;
 
@@ -54,7 +55,9 @@ export default class ManipulateEmbeddedViewComponent {
 
   addItem() {
     const name = `Item ${++this.counter}`;
-    const vr = this.container?.createEmbeddedView(this.listItemTemplate, { name });
+    const vr = this.container?.createEmbeddedView(this.listItemTemplate, {
+      name,
+    });
     this.itemViewRefs.set(name, vr);
   }
 
@@ -69,7 +72,10 @@ export default class ManipulateEmbeddedViewComponent {
   moveItemUp() {
     if (this.selectedItemView) {
       const currentIndex = this.container.indexOf(this.selectedItemView);
-      this.container.move(this.selectedItemView, currentIndex === 0 ? 0 : currentIndex - 1);
+      this.container.move(
+        this.selectedItemView,
+        currentIndex === 0 ? 0 : currentIndex - 1
+      );
     }
   }
 

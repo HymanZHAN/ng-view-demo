@@ -22,17 +22,21 @@ import { CardComponent } from "src/app/components/card/card.component";
       <ng-container title>What are some characteristics?</ng-container>
       <ng-container body>
         <p>
-          Properties of elements in a view can change dynamically, in response to user actions; the
-          structure (number and order) of elements in a view <strong class="bg-red-200">cannot</strong>.
+          Properties of elements in a view can change dynamically, in response
+          to user actions; the structure (number and order) of elements in a
+          view <strong class="bg-red-200">cannot</strong>.
         </p>
         <p>
-          You can change the structure of elements by inserting, moving, or removing nested views
-          within their
-          <a routerLink="/view-container-ref" class="link-primary">view containers</a>.
+          You can change the structure of elements by inserting, moving, or
+          removing nested views within their
+          <a routerLink="/view-container-ref" class="link-primary"
+            >view containers</a
+          >.
         </p>
         <p>
-          View hierarchies can be loaded and unloaded dynamically as the user navigates through the
-          application, typically under the control of a router.
+          View hierarchies can be loaded and unloaded dynamically as the user
+          navigates through the application, typically under the control of a
+          router.
         </p>
       </ng-container>
     </app-card>
