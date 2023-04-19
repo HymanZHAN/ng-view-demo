@@ -41,7 +41,7 @@ export default class TemplateRefComponent {
 
   addItem() {
     const name = `Item ${++this.counter}`;
-    const vr = this.container?.createEmbeddedView(this.listItemTemplate, {
+    const vr = this.container.createEmbeddedView(this.listItemTemplate, {
       name,
     });
     this.itemViewRefs.set(name, vr);
