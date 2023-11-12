@@ -1,5 +1,4 @@
-import { Injectable, WritableSignal, signal } from "@angular/core";
-import { BehaviorSubject, combineLatest, map, scan, Subject } from "rxjs";
+import { Injectable, signal } from "@angular/core";
 
 export interface ExerciseItem {
   name: string;
@@ -18,31 +17,9 @@ export class WelcomeService {
     signal({ name: "ViewContainerRef", checked: false }),
   ];
 
-  // private checkedExercises = new BehaviorSubject<Set<string>>(new Set());
-
-  // readonly checkExercise = new Subject<string>();
-
-  // // presentation
-  // exercises$ = combineLatest([this.exercises, this.checkedExercises]).pipe(
-  //   map(([a, b]) =>
-  //     a.map((i) => ({ name: i, checked: b.has(i) } as ExerciseItem))
-  //   )
-  // );
-
-  constructor() {
-    // this.checkExercise
-    //   .pipe(
-    //     scan((a, b) => {
-    //       a.has(b) ? a.delete(b) : a.add(b);
-    //       return a;
-    //     }, new Set<string>())
-    //   )
-    //   .subscribe(this.checkedExercises);
-  }
-
   toggleItem(item: ExerciseItem) {
     this.exercises
       .find((i) => i().name === item.name)
-      ?.update((i) => ({...i, checked: !i.checked }) );
+      ?.update((i) => ({ ...i, checked: !i.checked }));
   }
 }
