@@ -42,7 +42,7 @@ export class WelcomeService {
 
   toggleItem(item: ExerciseItem) {
     this.exercises
-      .find((item) => item().name === item.name)
-      ?.set({ ...item, checked: !item.checked });
+      .find((i) => i().name === item.name)
+      ?.update((i) => ({...i, checked: !i.checked }) );
   }
 }
