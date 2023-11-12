@@ -1,5 +1,11 @@
 import { AsyncPipe, NgForOf } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Signal,
+  WritableSignal,
+  inject,
+} from "@angular/core";
 import { ExerciseItem, WelcomeService } from "./welcome.service";
 import { FormsModule } from "@angular/forms";
 import { first, Observable } from "rxjs";
@@ -18,14 +24,14 @@ import { first, Observable } from "rxjs";
       />
       <div
         class="form-control"
-        *ngFor="let item of exercises$ | async; trackBy: itemTrackByName"
+        *ngFor="let item of exercises; trackBy: itemTrackByName"
       >
         <label class="cursor-pointer label">
-          <span class="label-text">{{ item.name }}</span>
+          <span class="label-text">{{ item().name }}</span>
           <input
             type="checkbox"
-            [checked]="item.checked"
-            (change)="toggleItem(item)"
+            [checked]="item().checked"
+            (change)="toggleItem(item())"
             class="checkbox checkbox-primary"
           />
         </label>
@@ -36,19 +42,19 @@ import { first, Observable } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class WelcomeComponent {
-  exercises$: Observable<ExerciseItem[]>;
+  exercises: WritableSignal<ExerciseItem>[];
   private service: WelcomeService;
 
   constructor() {
     this.service = inject(WelcomeService);
-    this.exercises$ = this.service.exercises$;
+    this.exercises = this.service.exercises;
   }
 
   toggleItem(item: ExerciseItem) {
-    this.service.checkExercise.next(item.name);
+    this.service.toggleItem(item);
   }
 
-  itemTrackByName(index: number, item: ExerciseItem) {
-    return item.name;
+  itemTrackByName(index: number, item: WritableSignal<ExerciseItem>) {
+    return item().name;
   }
 }
