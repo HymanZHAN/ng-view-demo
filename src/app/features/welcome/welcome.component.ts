@@ -50,8 +50,4 @@ export default class WelcomeComponent {
   toggleItem(item: ExerciseItem) {
     this.service.toggleItem(item);
   }
-
-  itemTrackByName(index: number, item: WritableSignal<ExerciseItem>) {
-    return item().name;
-  }
 }
